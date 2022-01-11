@@ -13,7 +13,9 @@ export default function Login() {
                 <button className="loginButton">Login</button>
             </form>
             <button className="loginRegisterButton">
-                <Link style={{textDecoration:"none", color:"inherit"}} to="/register">Register</Link>
+                <Link className="link"
+                // style={{textDecoration:"none", color:"inherit"}} 
+                to="/register">Register</Link>
             </button>
         </div>
     )

@@ -15,7 +15,11 @@ export default function Register() {
                 <button className="registerButton">Register</button>
             </form>
             <button className="registerLoginButton">
-                <Link className="link" style={{textDecoration:"none", color:"inherit"}} to="/login">Login</Link>
+                <Link className="link" 
+                // style={{textDecoration:"none", color:"inherit"}} 
+                to="/login">
+                    Login
+                </Link>
             </button>
         </div>
     )
