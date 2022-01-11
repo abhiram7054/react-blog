@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "./topbar.css"
 
 
 export default function TopBar() {
+    const user = false;
     return (
         <div className="top">
             <div className="topLeft">
@@ -13,18 +15,41 @@ export default function TopBar() {
             </div>
             <div className="topCenter">
                 <ul className="topList">
-                    <li className="topListItem">HOME</li>
-                    <li className="topListItem">ABOUT</li>
-                    <li className="topListItem">CONTACT</li>
-                    <li className="topListItem">WRITE</li>
-                    <li className="topListItem">LOGOUT</li>
+                    <li className="topListItem">
+                        <Link style={{textDecoration:"none", color:"inherit"}} to="/">HOME</Link>
+                    </li>
+                    <li className="topListItem">
+                        <Link style={{textDecoration:"none", color:"inherit"}} to="/">ABOUT</Link>
+                    </li>
+                    <li className="topListItem">
+                        <Link style={{textDecoration:"none", color:"inherit"}} to="/">CONTACT</Link>
+                    </li>
+                    <li className="topListItem">
+                        <Link style={{textDecoration:"none", color:"inherit"}} to="/write">WRITE</Link>
+                    </li>
+                    <li className="topListItem">{user && "LOGOUT"}</li>
                 </ul>
             </div>
             <div className="topRight">
+                {
+                    user ? (
+                
                 <img className="topImage"
                 src="http://www.shrividya.co.in/assets/img/team/profile.jpg"
                 alt=""
                 />
+                ) : (
+                    <ul className='topList'>
+                    <li className='topListItem'>
+                    <Link style={{textDecoration:"none", color:"inherit"}} to="/login">LOGIN</Link>
+                    </li>
+                    <li className='topListItem'>
+                    <Link style={{textDecoration:"none", color:"inherit"}} to="/register">REGISTER</Link>
+                    </li>
+                    </ul>
+                    
+                )
+                }
                 <i className="topSearchIcon fas fa-search"></i>
             </div>
 
