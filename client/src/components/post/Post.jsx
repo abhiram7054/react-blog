@@ -1,32 +1,34 @@
 import { Link } from "react-router-dom"
 import "./post.css"
 
-export default function Post() {
+export default function Post({post}) {
+    const PF = "http://localhost:5000/images/"
     return (
         <div className="post">
-            <Link to="/post/:postId">
+            {post.photo && (
+            <Link to={`/post/${post._id}`}>
             <img className="postImg"
-            src="https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__480.jpg"
+            src={PF + post.photo}
             alt=""
             />
             </Link>
+            )}
 
             <div className="postInfo">
                 <div className="postCats">
-                    <span className="postCat">Music</span>
-                    <span className="postCat">Life</span>
+                    {post.categories.map((c) => (
+                        <span className="postCat">{c.name}</span>                        
+                    ))}
                 </div>
 
-                <Link to="/post/:postId" className="link">
-                    <span className="postTitle">Lorem ipsum dolor sit amet </span>
+                <Link to={`/post/${post._id}`} className="link">
+                    <span className="postTitle"> {post.title} </span>
                 </Link>
                 <hr/>
-                <span className="postDate">1 hour ago</span>
+                <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
             </div>
             <p className="postDesc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias odit quo fugit molestias quia ea aut maxime, perferendis, in doloremque quae blanditiis debitis laboriosam! Rem explicabo veniam recusandae dignissimos consectetur!
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias odit quo fugit molestias quia ea aut maxime, perferendis, in doloremque quae blanditiis debitis laboriosam! Rem explicabo veniam recusandae dignissimos consectetur!
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias odit quo fugit molestias quia ea aut maxime, perferendis, in doloremque quae blanditiis debitis laboriosam! Rem explicabo veniam recusandae dignissimos consectetur!
+                {post.desc}
             </p>
         </div>
     )
